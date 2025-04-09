@@ -1,21 +1,22 @@
 #Bibliotecas necessárias 
 import nltk
 
-from deep_translator import GoogleTranslator as gt
-from nltk.chat.util import Chat, reflections
-from textblob import TextBlob
+from deep_translator import GoogleTranslator as gt #Biblioteca necessária para traduzir textos para o inglês
+from nltk.chat.util import Chat, reflections #Biblioteca com ferramentas para Linguagem Natural
+from textblob import TextBlob #Biblioteca de Análise de Sentimento
 
-import tkinter as tk
 
 nltk.download('stopwords')
 nltk.download('punkt')
 
 #Perguntas Genéricas
+
 pares = [
 ['Oi', ['Olá!', 'Olá, como vai?', 'Olá, como posso ajudar?']],
 ["Olá", ["Olá!"]],
 ['Como você está?', ['Estou bem, obrigado. E você?','Tudo ótimo!', 'Tudo bem!']],
 ['Tudo Bem?',['Tudo ótimo, e você, como vai?', 'Vou bem, e você?']],
+["Vou bem também!",["Que bom! Como posso te ajudar?"]],
 ['Quem é você?', ['Sou seu professor virtual.', 'Me chame de Prof. Bot']],
 ['Bom dia', ['Bom dia! Como posso te ajudar hoje?', 'Bom dia! Tudo bem?']],
 ['Boa tarde', ['Boa tarde! Como vai você?', 'Boa tarde! Em que posso ajudar?']],
@@ -24,10 +25,13 @@ pares = [
 ['Tchau', ['Até logo! Volte sempre.', 'Tchau! Foi bom conversar com você.']],
 ['Até mais', ['Até breve!', 'Nos falamos em breve!']],
 ['Qual é o seu objetivo?', ['Meu objetivo é ajudar a responder suas perguntas.', 'Estou aquipara te ensinar.']],
-['Que tipo de pergunta posso fazer para você?',['Eu respondo perguntas sobre Ciência de Dados e principalmente sobre Processamento de Linguagem Natural']],
+['Que tipo de pergunta posso fazer para você?',['Eu respondo perguntas sobre Ciência de Dados e \
+                                                principalmente sobre Processamento de Linguagem Natural']],
 
 #Perguntas sobre Ciência de Dados em geral
-['O que é Ciência de Dados?',['Ciência de Dados é uma área que mistura programação, estatística e conhecimento de negócios para entender dados, descobrir padrões e tomar decisões inteligentes com base neles.']],
+['O que é Ciência de Dados?',['Ciência de Dados é uma área que mistura programação, \
+                              estatística e conhecimento de negócios para entender dados, \
+                              descobrir padrões e tomar decisões inteligentes com base neles.']],
 
 ['Quais são as etapas de um projeto de Ciência de Dados?', 
  ['Coleta, limpeza, análise exploratória, modelagem, avaliação e comunicação dos resultados.']],
@@ -36,13 +40,16 @@ pares = [
  ['Python e R são as mais populares. Python é a mais usada no mercado.']],
 
 ['O que é análise exploratória de dados?', 
- ['É o processo de investigar os dados, encontrar padrões e entender melhor o que está acontecendo antes de aplicar modelos.']],
+ ['É o processo de investigar os dados, encontrar padrões e entender melhor o \
+  que está acontecendo antes de aplicar modelos.']],
 
 ['O que é machine learning?', 
- ['É uma área da inteligência artificial onde os computadores aprendem com dados sem serem programados diretamente.']],
+ ['É uma área da inteligência artificial onde os computadores aprendem com \
+  dados sem serem programados diretamente.']],
 
 #Perguntas sobre Processamento de Linguagem Natural
-['O que é Processamento de Linguagem Natural?',['PLN é a área da inteligência artificial que ensina computadores a entender, interpretar e gerar linguagem humana']],
+['O que é Processamento de Linguagem Natural?',['PLN é a área da inteligência artificial que ensina \
+                                                computadores a entender, interpretar e gerar linguagem humana']],
 
 ['O que é tokenização?', 
  ['É o processo de dividir um texto em palavras, frases ou outros elementos chamados tokens.']],
