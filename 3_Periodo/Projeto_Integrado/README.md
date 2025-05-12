@@ -186,8 +186,8 @@ Para visualizarmos melhor a relação entre a gravidade dos acidentes, distribui
 A dispersão do índice de gravidade apresenta um padrão marcado por uma alta quantidade de outliers, o que pode levar a interpretações equivocadas dos dados. Embora a presença de muitos pontos fora dos limites interquartis possa sugerir a exclusão desses registros, optamos por não tratá-los como outliers neste projeto.
 Apesar de o coeficiente de gravidade ser bastante sensível a valores extremos, consideramos plausível a existência de acidentes com alta variabilidade, o que justifica esses valores fora do comum. Exemplos disso incluem situações como acidentes com muitos feridos leves e nenhum óbito, ou casos com três mortes envolvendo apenas um veículo.
 
-*O período do dia em que ocorrem os acidentes influencia diretamente na frequência:*  
-![Dimensão do Dataframe](img/histplot_acidentes_por_hora.png)  
+*O período do dia em que ocorrem os acidentes influencia diretamente na frequência:*    
+![Dimensão do Dataframe](img/histplot_acidentes_por_hora.png)    
 
 
 O gráfico acima representa a distribuição total dos acidentes ao longo do dia, sem segmentação por categoria. Ele revela picos de frequência evidentes em horários específicos, como às **7h** e às **18h** — momentos associados ao deslocamento diário da população para o trabalho ou retorno para casa. Isso sugere uma correlação direta entre o aumento do fluxo de veículos nas ruas e a ocorrência de acidentes.
