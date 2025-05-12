@@ -63,7 +63,7 @@ Mortes: 5
   
 Assim, o coeficiente de gravidade apresenta a seguinte fórmula:  
 
-![Dimensão do Dataframe](img/formula_gravidade.JPG)   
+![Fórmula Gravidade](img/formula_gravidade.JPG)   
 
 
 
@@ -87,28 +87,28 @@ Com essas novas colunas para mensurar a gravidade dos acidentes, conseguimos cri
 Os dados de um conjunto quando organizados podem gerar informações valiosas para o entendimento geral do objeto de análise. Vamos visualizar 2   tabelas (numéricas e não numéricas) com o perfil estatístico geral.  
   
 *Perfil estatístico descritivo das variáveis não numéricas:*  
-![Dimensão do Dataframe](img/tabela_estatistica_n_numerica.JPG)  
+![Tabela 1](img/tabela_estatistica_n_numerica.JPG)  
 
 *Perfil estatístico descritivo das variáveis numéricas:*
-![Dimensão do Dataframe](img/tabela_estatistica_numerica.JPG)  
+![Tabela 2](img/tabela_estatistica_numerica.JPG)  
 
 Com essas informações iniciais, é possível obter uma visão mais clara da composição dos dados, suas relações e proporções.
 A tabela das variáveis qualitativas apresenta não apenas os valores modais, suas frequências absolutas e proporções relativas, mas também destaca os valores menos frequentes, oferecendo uma perspectiva abrangente sobre a distribuição dos dados categóricos.  
 Por sua vez, a tabela das variáveis quantitativas incorpora ferramentas estatísticas essenciais para análise de distribuição e dispersão, como média, mediana, desvio padrão e proporções, trazendo uma base sólida para interpretações iniciais.  
 
 *Outra visualização importante é a matriz de correlação, que permite identificar o grau de associação entre variáveis numéricas:*
-![Dimensão do Dataframe](img/tabela_corr_matrix.JPG)
+![Tabela 3](img/tabela_corr_matrix.JPG)
 
 A partir da matriz, podemos avaliar quais variáveis possuem maior influência sobre outras, ajudando a orientar decisões na construção de modelos preditivos ou na interpretação dos dados.  
 Nesse primeiro momento, para aprofundar a análise exploratória dos acidentes, definiremos as colunas *‘causa_acidente’* e *‘tipo_acidente’* como variáveis-alvo a começaremos a partir de duas tabelas de frequência com as 15 principais causas e tipos de acidentes no trânsito:  
 
 *Top 15 causas de acidentes*  
-![Dimensão do Dataframe](img/top_15_causas_acidentes.JPG)   
+![Ranking 1](img/top_15_causas_acidentes.JPG)   
 
 A tabela com as 15 principais causas de acidentes revela a frequência total de registros no conjunto de dados. Entre as mais recorrentes, destacam-se causas como reação tardia ou ineficiente, ausência de reação, acesso à via sem a devida observação e negligência na manutenção de distância segura entre veículos. Esses fatores apontam fortemente para uma relação com imprudência e desatenção por parte dos condutores. Um dado relevante é que 9 das 10 principais causas estão diretamente ligadas a falhas humanas, reforçando essa conexão.     
 
 *Top 15 tipos de acidentes*   
-![Dimensão do Dataframe](img/distribuicao_freq_acidentes_gerais.png) 
+![Barplot 1](img/distribuicao_freq_acidentes_gerais.png) 
 
 
 O gráfico que representa os tipos de acidentes acompanha a mesma tendência: colisão traseira, saída do leito carroçável e colisão transversal estão entre os mais frequentes, sugerindo uma correspondência empírica entre os tipos de acidente e as causas identificadas. Em primeiro lugar com **11.638** registros se encontra o tipo *'Colisão traseira'*, seguido de *'Saída de Leito Carroçável'* e *'Colisão transversal'*, com **8.791** e **7.761**, respectivamente. Esses números mostram um perfil de acidente predominante em uma análise geral.
@@ -116,54 +116,54 @@ O gráfico que representa os tipos de acidentes acompanha a mesma tendência: co
 **Gravidade dos Acidentes**  
 Seguindo a análise dos tipos de acidentes, se segmentarmos apenas para acidentes graves ou com vítimas fatais, percebemos uma inversão na ordem da frequência:  
 
-![Dimensão do Dataframe](img/distribuicao_freq_acidentes_fatais.png) 
+![Barplot 2](img/distribuicao_freq_acidentes_fatais.png) 
 
 Quando segmentado acidentes graves e fatais, o tipo *‘Colisão frontal’* aparece em primeiro lugar com pelo menos o dobro de ocorrências que o tipo *‘Colisão traseira’*, que ocupa a segunda posição. O gráfico deixa claro a alta correlação entre acidentes graves/fatais e acidentes do tipo colisão frontal, demonstrando que apesar de o tipo colisão frontal não ser tão recorrente quanto colisão traseira, ele certamente é mais letal.
 O mesmo acontece com o gráfico da frequência de causas quando segmentado apenas para acidentes graves e/ou fatais: Transitar na contramão salta da 8° posição para a 1°, evidenciando a letalidade dessa causa específica e mostrando a relação direta entre imprudência e falta de respeito no trânsito com as altas taxas de acidentes graves e fatais.  
   
-![Dimensão do Dataframe](img/distribuicao_causa_acidente_fatais.png)   
+![Barplot 3](img/distribuicao_causa_acidente_fatais.png)   
 
 Boxplots relacionando as variáveis-alvo com o coeficiente de gravidade:  
 *Causas x Gravidade*  
-![Dimensão do Dataframe](img/boxplot_causa_x_gravidade.png) 
+![Boxplot 1](img/boxplot_causa_x_gravidade.png) 
 
 *Tipos x Gravidade*
-![Dimensão do Dataframe](img/boxplot_tipo_x_gravidade.png)   
+![Boxplot 2](img/boxplot_tipo_x_gravidade.png)   
 
 
 Vamos criar uma tabela com as 15 principais causas de acidentes, relacionar com os valores modais das demais variáveis categóricas presentes nessas causas e segmentar a tabela apenas para acidentes graves e fatais, ou seja, será considerado apenas acidentes com *1 ou mais vítimas fatais e 1 ou mais vítimas com ferimentos graves*: 
 
-![Dimensão do Dataframe](img/tabela_causas_feridos_fatais.JPG) 
+![Tabela 4](img/tabela_causas_feridos_fatais.JPG) 
   
 A tabela mostra que, ao agrupar os dados por causa de acidentes graves ou fatais e calcular a moda das variáveis categóricas, é possível identificar os valores mais recorrentes associados a cada tipo de causa, revelando padrões predominantes.
 Algumas colunas, como *'classificacao_acidente'*, *'condicao_metereologica'*, *'tracado_via'*, *'mortos'* e *'feridos_graves'*, apresentam valores hegemônicos nas principais causas de acidentes. Na coluna *'condicao_metereologica'* por exemplo, o valor *'Céu Claro'* está presente em todas as principais causas, porém o fato do valor aparecer com destaque não pode ser interpretado como uma relação de causalidade. A predominância do atributo quando agregado por moda é o reflexo da frequência real dessa condição meteorológica no conjunto de dados, podendo criar um enviesamento na interpretação dos resultados, sendo que essa hegemonia pode ocorrer simplesmente porque a condição meteorológica no nosso país é *'Céu Claro'*, logo a maioria dos acidentes acontecem durante essa condição. O mesmo ocorre na coluna *'classificacao_acidente'* onde predomina *'Vítimas Feridas'*, porque a maioria dos acidentes possui vítimas feridas.
 
 Quando segmentamos dos acidentes apenas os mais graves e fatais, vemos um aumento de ocorrências em condições de *‘Chuva’*, *‘Nublado’* e *‘Garoa/Chuvisco’*, porém de forma geral, acidentes acontecem em todas as condições meteorológicas, apesar da evidente diferença de frequência quando a condição é *‘Céu claro’*: 
 
-![Dimensão do Dataframe](img/boxplot_distribuicao_gravidade_condicao_meteorologica.png)
+![Boxplot 3](img/boxplot_distribuicao_gravidade_condicao_meteorologica.png)
 
 A partir dessa ótica, o valor modal desse atributo revelou um contexto comum onde os acidentes ocorrem, e não necessariamente um fator de risco determinante na causa de acidentes.
 Considerando uma distribuição proporcional das condições meteorológicas nos tipos dos acidentes:
 
-![Dimensão do Dataframe](img/top_10_acidentes_moda.JPG)
+![Tabela 5](img/top_10_acidentes_moda.JPG)
 
 É possível identificar alguns tipos de acidentes com uma maior probabilidade de acontecer em determinada condição meteorológica. Na chuva, tipos de acidentes como *'Saída de leito carroçável'*, *'Colisão com objeto'*, *'Colisão frontal'* e *'Colisão lateral sentido oposto'* têm uma maior chance de ocorrerem em condição de chuva, fato que pode ser relacionado ao excesso de água na pista, acarretando acidentes do tipo *'Saída do leito carroçável'* e *'Colisão lateral sentido oposto'*; e à condição de visibilidade, levando à ocorrência de acidentes do tipo *'Colisão frontal'*, e *'Colisão com objeto'*.
 
 Vamos expandir a análise e explorar outras variáveis do conjunto que estão relacionadas com a gravidade dos acidentes:
 
 *Gráfico de pizza da Classificação dos Acidentes*    
-![Dimensão do Dataframe](img/pie_classificacao_acidente.png)
+![Pie 1](img/pie_classificacao_acidente.png)
 
 O gráfico acima mostra um alto índice de acidentes com *‘Vítimas Feridas’*, **7,1%** de *‘Vítimas Fatais’* e **16,2%** *‘Sem Vítima’*, sugerindo que a maioria dos acidentes de trânsito são compostos por pelo menos **1 vítima ferida**, sejam elas feridas leves ou graves.
 O gráfico de pizza abaixo demonstra essa realidade com a distribuição proporcional da classificação das vítimas envolvidas em acidentes:
 
 *Vítimas envolvidas em acidentes:*  
-![Dimensão do Dataframe](img/pie_vitimas.png)
+![Pie 2](img/pie_vitimas.png)
 
 Menos da metade (**45,8%**) das pessoas envolvidas em acidentes saem ilesas, cerca de *50%* dessas pessoas sofrem ferimentos leves ou graves e **3,6%** acabam falecendo. Esses dados evidenciam a gravidade da situação nas rodovias, revelando um sistema viário marcado por altos índices de violência e letalidade. 
 
 A contagem de veículos envolvidos em acidentes é de fundamental importância para entendermos os graus de gravidade das ocorrências.  
-![Dimensão do Dataframe](img/estats_veiculos.JPG)
+![Tabela 6](img/estats_veiculos.JPG)
 
 A tabela acima retorna um perfil estatístico dessa variável numérica com ferramentas importantes para a análise inicial.
 Acidentes com apenas **2 veículos** aparecem como a média e a moda no total de ocorrências, sendo essa a quantidade de veículos mais recorrentes em acidentes, logo após vem os acidentes com **1 veículo**, mostrando a correlação que existe entre acidentes com apenas **1 veículo** e alguns tipos de acidentes que figuram no topo dos principais, como: *‘Saída de leito carroçável’*, *‘Atropelamento de pedestre’* e *‘Tombamento’*.
@@ -172,31 +172,31 @@ Acidentes com apenas **2 veículos** aparecem como a média e a moda no total de
 Segundo o gráfico, cerca de **29 mil** acidentes envolveram apenas **2 veículos**, enquanto aproximadamente **19 mil** ocorreram com apenas **1 veículo**. Após esses dois principais grupos, observa-se uma queda gradual na frequência, indicando que acidentes com maior número de veículos são progressivamente menos comuns.
 
 *Gráfico em escala Logarítmica*  
-![Dimensão do Dataframe](img/barplot_n_veiculos_por_acidente.png)
+![Barplot 4](img/barplot_n_veiculos_por_acidente.png)
 
 *Gravidade média dos acidentes por número de veículos envolvidos:*  
-![Dimensão do Dataframe](img/lineplot_gravidade_por_n_veiculos.png)  
+![Lineplot 1](img/lineplot_gravidade_por_n_veiculos.png)  
 
 
 O gráfico acima relaciona a gravidade média dos acidentes com a quantidade de veículos envolvidos no acidente e mostra alguns padrões interessantes. A contagem de veículos mantém uma correlação positiva com a gravidade de forma crescente até o número **10**, onde há uma queda, chegando a **50% menos** de gravidade em relação a números anteriores. Esse pico se repete quando há **15 veículos** envolvidos, retrai os mesmos **50%** e depois apresenta um aumento exponencial com o aumento de veículos envolvidos.
 Para visualizarmos melhor a relação entre a gravidade dos acidentes, distribuição de frequências das vítimas e o número de carros envolvidos, vamos criar um Boxplot com a distribuição: 
 
-![Dimensão do Dataframe](img/boxplot_gravidade_por_veiculos_vitimas.png)  
+![Boxplot 4](img/boxplot_gravidade_por_veiculos_vitimas.png)  
 
 A dispersão do índice de gravidade apresenta um padrão marcado por uma alta quantidade de outliers, o que pode levar a interpretações equivocadas dos dados. Embora a presença de muitos pontos fora dos limites interquartis possa sugerir a exclusão desses registros, optamos por não tratá-los como outliers neste projeto.
 Apesar de o coeficiente de gravidade ser bastante sensível a valores extremos, consideramos plausível a existência de acidentes com alta variabilidade, o que justifica esses valores fora do comum. Exemplos disso incluem situações como acidentes com muitos feridos leves e nenhum óbito, ou casos com três mortes envolvendo apenas um veículo.
 
 *O período do dia em que ocorrem os acidentes influencia diretamente na frequência:*    
-![Dimensão do Dataframe](img/histplot_acidentes_por_hora.png)    
+![Histplot 1](img/histplot_acidentes_por_hora.png)    
 
 
 O gráfico acima representa a distribuição total dos acidentes ao longo do dia, sem segmentação por categoria. Ele revela picos de frequência evidentes em horários específicos, como às **7h** e às **18h** — momentos associados ao deslocamento diário da população para o trabalho ou retorno para casa. Isso sugere uma correlação direta entre o aumento do fluxo de veículos nas ruas e a ocorrência de acidentes.
 Ao segmentarmos apenas os acidentes graves ou com vítimas fatais, o padrão de distribuição muda significativamente. Os horários da manhã — **5h, 6h e 7h** — apresentam frequências semelhantes entre si, o que reduz a evidência de um pico isolado às **7h**. Já no período da tarde, observa-se uma uniformidade entre **14h, 15h e 16h**. No entanto, os horários de **17h, 18h** e, especialmente, **19h** apresentam as maiores frequências do dia, atingindo seu ápice às **19**h. Embora não haja dados suficientes para afirmar com precisão as causas desse aumento, é plausível considerar que esse período coincide com o retorno do trabalho, quando o cansaço, o estresse e a pressa podem contribuir para a gravidade dos acidentes.
 
-![Dimensão do Dataframe](img/histplot_acidentes_por_hora_graves_fatais.png)  
+![Histplot 2](img/histplot_acidentes_por_hora_graves_fatais.png)  
 
 *Outro fator que pesa na gravidade das ocorrências é o tipo de pista, observe:*    
-![Dimensão do Dataframe](img/scatter_gravidade_por_hora_tipo_pista.png)  
+![Scatterplot 1](img/scatter_gravidade_por_hora_tipo_pista.png)  
 
 Fica evidente através do gráfico que o tipo de pista *‘Simples’* representa um nível de gravidade bem acima que dos outros tipos. A partir de um ponto na escala de gravidade, o tipo *‘Simples’* prevalece em todos os horários do dia, deixando claro a importância de uma estrutura viária de qualidade e segurança, por outro lado reafirma a importância de campanhas educativas e de conscientização sobre a atenção e cuidados que a pista simples e com menos estrutura exige.
 
@@ -206,15 +206,15 @@ Fica evidente através do gráfico que o tipo de pista *‘Simples’* represent
 Aplicando algumas técnicas de *Processamento de Linguagem Natural*, podemos criar uma abordagem simples de análise de texto sobre as causas dos acidentes e observar alguns pontos.
 Após o pré-processamento, limpeza e lematização, escolhemos o modelo **TF-IDF** de vetorização e aplicamos o *cosseno de similaridade* para o agrupamento semântico das principais causas de acidentes fatais:
 
-![Dimensão do Dataframe](img/grupo_causa_nlp_1.JPG)  
-![Dimensão do Dataframe](img/grupo_causa_nlp_2.JPG)  
+![Tabela 7](img/grupo_causa_nlp_1.JPG)  
+![Tabela 8](img/grupo_causa_nlp_2.JPG)  
 
 
 É possível observar que as causas com maior letalidade contém termos relacionados principalmente ao fator humano, imprudência e comportamento de risco tanto por parte do condutor quanto do pedestre.
 
 Causas como *‘transitar na contramão’*, *‘pedestre andava na pista’*, *‘velocidade incompatível’* e *‘ultrapassagem indevida’* tornam evidente a porcentagem majoritária ao fator humano. Outras causas estão relacionadas a possível falta de estrutura e a precariedade do sistema viário, como: *‘ausência de reação do condutor’*, *‘reação tardia ou ineficiente do condutor’* ou *‘acessar via sem observar a presença dos outros veículos’*. Esses são exemplos de causas que em primeira análise parece estar relacionada apenas ao fator humano, porém a similaridade semântica  as relaciona a fatores como *‘ausência de sinalização’*, *‘sinalização mal posicionada’* ou *‘ausência de local apropriado para atravessar rodovia’*, demonstrando que a falta de estrutura do sistema viário também é um fator de risco para ocorrência de acidentes fatais.
 
-![Dimensão do Dataframe](img/top_10_grupos_causas_fatais.png)  
+![Ranking 2](img/top_10_grupos_causas_fatais.png)  
 
 Segundo o processamento de linguagem natural, é correto afirmar que a condição meteorológica não é fator determinante das causas entre acidentes fatais. Apesar do aumento do risco e da média no coeficiente de gravidade quando a condição é de chuva, a imprudência e o comportamento de risco continuam prevalecendo nessa equação, demonstrando a grande importância de campanhas educativas e ações diretas de combate à imprudência e violência no trânsito.
 
