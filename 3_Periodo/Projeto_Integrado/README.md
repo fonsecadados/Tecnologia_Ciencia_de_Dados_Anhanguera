@@ -80,7 +80,7 @@ acima de 10       | *‘muito alto’*
   
 Com essas novas colunas para mensurar a gravidade dos acidentes, conseguimos criar padrões mais claros e extrair melhor as informações contidas   nos dados.  
   
-**Análise Exploratória de Dados**  
+### Análise Exploratória de Dados  
 
 **Os acidentes e suas características**  
 
@@ -131,118 +131,152 @@ Boxplots relacionando as variáveis-alvo com o coeficiente de gravidade:
 ![Dimensão do Dataframe](img/boxplot_tipo_x_gravidade.png)   
 
 
-Vamos criar uma tabela com as 15 principais causas de acidentes, relacionar com os valores modais das demais variáveis categóricas presentes nessas causas e segmentar a tabela apenas para acidentes graves e fatais, ou seja, será considerado apenas acidentes com 1 ou mais vítimas fatais e 1 ou mais vítimas com ferimentos graves:  
+Vamos criar uma tabela com as 15 principais causas de acidentes, relacionar com os valores modais das demais variáveis categóricas presentes nessas causas e segmentar a tabela apenas para acidentes graves e fatais, ou seja, será considerado apenas acidentes com *1 ou mais vítimas fatais e 1 ou mais vítimas com ferimentos graves*: 
+
+![Dimensão do Dataframe](img/tabela_causas_feridos_fatais.JPG) 
   
 A tabela mostra que, ao agrupar os dados por causa de acidentes graves ou fatais e calcular a moda das variáveis categóricas, é possível identificar os valores mais recorrentes associados a cada tipo de causa, revelando padrões predominantes.
-Algumas colunas, como 'classificacao_acidente', 'condicao_metereologica', 'tracado_via', 'mortos' e 'feridos_graves', apresentam valores hegemônicos nas principais causas de acidentes. Na coluna 'condicao_metereologica' por exemplo, o valor "Céu Claro" está presente em todas as principais causas, porém o fato do valor aparecer com destaque não pode ser interpretado como uma relação de causalidade. A predominância do atributo quando agregado por moda é o reflexo da frequência real dessa condição meteorológica no conjunto de dados, podendo criar um enviesamento na interpretação dos resultados, sendo que essa hegemonia pode ocorrer simplesmente porque a condição meteorológica no nosso país é "Céu Claro", logo a maioria dos acidentes acontecem durante essa condição. O mesmo ocorre na coluna 'classificacao_acidente' onde predomina 'Vítimas Feridas', porque a maioria dos acidentes possui vítimas feridas.
-Quando segmentamos dos acidentes apenas os mais graves e fatais, vemos um aumento de ocorrências em condições de ‘Chuva’, ‘Nublado’ e ‘Garoa/Chuvisco’, porém de forma geral, acidentes acontecem em todas as condições meteorológicas, apesar da evidente diferença de frequência quando a condição é ‘Céu claro’: 
+Algumas colunas, como *'classificacao_acidente'*, *'condicao_metereologica'*, *'tracado_via'*, *'mortos'* e *'feridos_graves'*, apresentam valores hegemônicos nas principais causas de acidentes. Na coluna *'condicao_metereologica'* por exemplo, o valor *'Céu Claro'* está presente em todas as principais causas, porém o fato do valor aparecer com destaque não pode ser interpretado como uma relação de causalidade. A predominância do atributo quando agregado por moda é o reflexo da frequência real dessa condição meteorológica no conjunto de dados, podendo criar um enviesamento na interpretação dos resultados, sendo que essa hegemonia pode ocorrer simplesmente porque a condição meteorológica no nosso país é *'Céu Claro'*, logo a maioria dos acidentes acontecem durante essa condição. O mesmo ocorre na coluna *'classificacao_acidente'* onde predomina *'Vítimas Feridas'*, porque a maioria dos acidentes possui vítimas feridas.
+
+Quando segmentamos dos acidentes apenas os mais graves e fatais, vemos um aumento de ocorrências em condições de *‘Chuva’*, *‘Nublado’* e *‘Garoa/Chuvisco’*, porém de forma geral, acidentes acontecem em todas as condições meteorológicas, apesar da evidente diferença de frequência quando a condição é *‘Céu claro’*: 
+
+![Dimensão do Dataframe](img/boxplot_distribuicao_gravidade_condicao_meteorologica.png)
 
 A partir dessa ótica, o valor modal desse atributo revelou um contexto comum onde os acidentes ocorrem, e não necessariamente um fator de risco determinante na causa de acidentes.
 Considerando uma distribuição proporcional das condições meteorológicas nos tipos dos acidentes:
 
+![Dimensão do Dataframe](img/top_10_acidentes_moda.JPG)
 
-É possível identificar alguns tipos de acidentes com uma maior probabilidade de acontecer em determinada condição meteorológica. Na chuva, tipos de acidentes como 'Saída de leito carroçável', 'Colisão com objeto', 'Colisão frontal' e 'Colisão lateral sentido oposto' têm uma maior chance de ocorrerem em condição de chuva, fato que pode ser relacionado ao excesso de água na pista, acarretando acidentes do tipo 'Saída do leito carroçável' e 'Colisão lateral sentido oposto'; e à condição de visibilidade, levando à ocorrência de acidentes do tipo 'Colisão frontal', e 'Colisão com objeto'.
+É possível identificar alguns tipos de acidentes com uma maior probabilidade de acontecer em determinada condição meteorológica. Na chuva, tipos de acidentes como *'Saída de leito carroçável'*, *'Colisão com objeto'*, *'Colisão frontal'* e *'Colisão lateral sentido oposto'* têm uma maior chance de ocorrerem em condição de chuva, fato que pode ser relacionado ao excesso de água na pista, acarretando acidentes do tipo *'Saída do leito carroçável'* e *'Colisão lateral sentido oposto'*; e à condição de visibilidade, levando à ocorrência de acidentes do tipo *'Colisão frontal'*, e *'Colisão com objeto'*.
 
 Vamos expandir a análise e explorar outras variáveis do conjunto que estão relacionadas com a gravidade dos acidentes:
-Gráfico de pizza da Classificação dos Acidentes
 
-O gráfico acima mostra um alto índice de acidentes com ‘Vítimas Feridas’, 7,1% de ‘Vítimas Fatais’ e 16,2% ‘Sem Vítima’, sugerindo que a maioria dos acidentes de trânsito são compostos por pelo menos 1 vítima ferida, sejam elas feridas leves ou graves.
+*Gráfico de pizza da Classificação dos Acidentes*    
+![Dimensão do Dataframe](img/pie_classificacao_acidente.png)
+
+O gráfico acima mostra um alto índice de acidentes com *‘Vítimas Feridas’*, **7,1%** de *‘Vítimas Fatais’* e **16,2%** *‘Sem Vítima’*, sugerindo que a maioria dos acidentes de trânsito são compostos por pelo menos **1 vítima ferida**, sejam elas feridas leves ou graves.
 O gráfico de pizza abaixo demonstra essa realidade com a distribuição proporcional da classificação das vítimas envolvidas em acidentes:
-Vítimas envolvidas em acidentes
 
-Menos da metade (45,8%) das pessoas envolvidas em acidentes saem ilesas, cerca de 50% dessas pessoas sofrem ferimentos leves ou graves e 3,6% acabam falecendo. Esses dados evidenciam a gravidade da situação nas rodovias, revelando um sistema viário marcado por altos índices de violência e letalidade. 
-A contagem de veículos envolvidos em acidentes é de fundamental importância para entendermos os graus de gravidade das ocorrências.
+*Vítimas envolvidas em acidentes:*  
+![Dimensão do Dataframe](img/pie_vitimas.png)
+
+Menos da metade (**45,8%**) das pessoas envolvidas em acidentes saem ilesas, cerca de *50%* dessas pessoas sofrem ferimentos leves ou graves e **3,6%** acabam falecendo. Esses dados evidenciam a gravidade da situação nas rodovias, revelando um sistema viário marcado por altos índices de violência e letalidade. 
+
+A contagem de veículos envolvidos em acidentes é de fundamental importância para entendermos os graus de gravidade das ocorrências.  
+![Dimensão do Dataframe](img/estats_veiculos.JPG)
 
 A tabela acima retorna um perfil estatístico dessa variável numérica com ferramentas importantes para a análise inicial.
-Acidentes com apenas 2 veículos aparecem como a média e a moda no total de ocorrências, sendo essa a quantidade de veículos mais recorrentes em acidentes, logo após vem os acidentes com 1 veículo, mostrando a correlação que existe entre acidentes com apenas 1 veículo e alguns tipos de acidentes que figuram no topo dos principais, como: ‘Saída de leito carroçável’, ‘Atropelamento de pedestre’ e ‘Tombamento’.
+Acidentes com apenas **2 veículos** aparecem como a média e a moda no total de ocorrências, sendo essa a quantidade de veículos mais recorrentes em acidentes, logo após vem os acidentes com **1 veículo**, mostrando a correlação que existe entre acidentes com apenas **1 veículo** e alguns tipos de acidentes que figuram no topo dos principais, como: *‘Saída de leito carroçável’*, *‘Atropelamento de pedestre’* e *‘Tombamento’*.
 
 
-Segundo o gráfico, cerca de 29 mil acidentes envolveram apenas 2 veículos, enquanto aproximadamente 19 mil ocorreram com apenas 1 veículo. Após esses dois principais grupos, observa-se uma queda gradual na frequência, indicando que acidentes com maior número de veículos são progressivamente menos comuns.
-Gráfico em escala Logarítmica
+Segundo o gráfico, cerca de **29 mil** acidentes envolveram apenas **2 veículos**, enquanto aproximadamente **19 mil** ocorreram com apenas **1 veículo**. Após esses dois principais grupos, observa-se uma queda gradual na frequência, indicando que acidentes com maior número de veículos são progressivamente menos comuns.
+
+*Gráfico em escala Logarítmica*  
+![Dimensão do Dataframe](img/barplot_n_veiculos_por_acidente.png)
+
+*Gravidade média dos acidentes por número de veículos envolvidos:*  
+![Dimensão do Dataframe](img/lineplot_gravidade_por_n_veiculos.png)  
 
 
-
-O gráfico acima relaciona a gravidade média dos acidentes com a quantidade de veículos envolvidos no acidente e mostra alguns padrões interessantes. A contagem de veículos mantém uma correlação positiva com a gravidade de forma crescente até o número 10, onde há uma queda, chegando a 50% menos de gravidade em relação a números anteriores. Esse pico se repete quando há 15 veículos envolvidos, retrai os mesmos 50% e depois apresenta um aumento exponencial com o aumento de veículos envolvidos.
+O gráfico acima relaciona a gravidade média dos acidentes com a quantidade de veículos envolvidos no acidente e mostra alguns padrões interessantes. A contagem de veículos mantém uma correlação positiva com a gravidade de forma crescente até o número **10**, onde há uma queda, chegando a **50% menos** de gravidade em relação a números anteriores. Esse pico se repete quando há **15 veículos** envolvidos, retrai os mesmos **50%** e depois apresenta um aumento exponencial com o aumento de veículos envolvidos.
 Para visualizarmos melhor a relação entre a gravidade dos acidentes, distribuição de frequências das vítimas e o número de carros envolvidos, vamos criar um Boxplot com a distribuição: 
+
+![Dimensão do Dataframe](img/boxplot_gravidade_por_veiculos_vitimas.png)  
 
 A dispersão do índice de gravidade apresenta um padrão marcado por uma alta quantidade de outliers, o que pode levar a interpretações equivocadas dos dados. Embora a presença de muitos pontos fora dos limites interquartis possa sugerir a exclusão desses registros, optamos por não tratá-los como outliers neste projeto.
 Apesar de o coeficiente de gravidade ser bastante sensível a valores extremos, consideramos plausível a existência de acidentes com alta variabilidade, o que justifica esses valores fora do comum. Exemplos disso incluem situações como acidentes com muitos feridos leves e nenhum óbito, ou casos com três mortes envolvendo apenas um veículo.
 
-O período do dia em que ocorrem os acidentes influencia diretamente na frequência:
-
-O gráfico acima representa a distribuição total dos acidentes ao longo do dia, sem segmentação por categoria. Ele revela picos de frequência evidentes em horários específicos, como às 7h e às 18h — momentos associados ao deslocamento diário da população para o trabalho ou retorno para casa. Isso sugere uma correlação direta entre o aumento do fluxo de veículos nas ruas e a ocorrência de acidentes.
-Ao segmentarmos apenas os acidentes graves ou com vítimas fatais, o padrão de distribuição muda significativamente. Os horários da manhã — 5h, 6h e 7h — apresentam frequências semelhantes entre si, o que reduz a evidência de um pico isolado às 7h. Já no período da tarde, observa-se uma uniformidade entre 14h, 15h e 16h. No entanto, os horários de 17h, 18h e, especialmente, 19h apresentam as maiores frequências do dia, atingindo seu ápice às 19h. Embora não haja dados suficientes para afirmar com precisão as causas desse aumento, é plausível considerar que esse período coincide com o retorno do trabalho, quando o cansaço, o estresse e a pressa podem contribuir para a gravidade dos acidentes.
-
-Outro fator que pesa na gravidade das ocorrências é o tipo de pista, observe:
-
-Fica evidente através do gráfico que o tipo de pista ‘Simples’ representa um nível de gravidade bem acima que dos outros tipos. A partir de um ponto na escala de gravidade, o tipo ‘Simples’ prevalece em todos os horários do dia, deixando claro a importância de uma estrutura viária de qualidade e segurança, por outro lado reafirma a importância de campanhas educativas e de conscientização sobre a atenção e cuidados que a pista simples e com menos estrutura exige.
+*O período do dia em que ocorrem os acidentes influencia diretamente na frequência:*  
+![Dimensão do Dataframe](img/histplot_acidentes_por_hora.png)  
 
 
-Processamento de Linguagem Natural
+O gráfico acima representa a distribuição total dos acidentes ao longo do dia, sem segmentação por categoria. Ele revela picos de frequência evidentes em horários específicos, como às **7h** e às **18h** — momentos associados ao deslocamento diário da população para o trabalho ou retorno para casa. Isso sugere uma correlação direta entre o aumento do fluxo de veículos nas ruas e a ocorrência de acidentes.
+Ao segmentarmos apenas os acidentes graves ou com vítimas fatais, o padrão de distribuição muda significativamente. Os horários da manhã — **5h, 6h e 7h** — apresentam frequências semelhantes entre si, o que reduz a evidência de um pico isolado às **7h**. Já no período da tarde, observa-se uma uniformidade entre **14h, 15h e 16h**. No entanto, os horários de **17h, 18h** e, especialmente, **19h** apresentam as maiores frequências do dia, atingindo seu ápice às **19**h. Embora não haja dados suficientes para afirmar com precisão as causas desse aumento, é plausível considerar que esse período coincide com o retorno do trabalho, quando o cansaço, o estresse e a pressa podem contribuir para a gravidade dos acidentes.
 
-Aplicando algumas técnicas de Processamento de Linguagem Natural, podemos criar uma abordagem simples de análise de texto sobre as causas dos acidentes e observar alguns pontos.
-Após o pré-processamento, limpeza e lematização, escolhemos o modelo TF-IDF de vetorização e aplicamos o cosseno de similaridade para o agrupamento semântico das principais causas de acidentes fatais:
+![Dimensão do Dataframe](img/histplot_acidentes_por_hora_graves_fatais.png)  
+
+*Outro fator que pesa na gravidade das ocorrências é o tipo de pista, observe:*    
+![Dimensão do Dataframe](img/scatter_gravidade_por_hora_tipo_pista.png)  
+
+Fica evidente através do gráfico que o tipo de pista *‘Simples’* representa um nível de gravidade bem acima que dos outros tipos. A partir de um ponto na escala de gravidade, o tipo *‘Simples’* prevalece em todos os horários do dia, deixando claro a importância de uma estrutura viária de qualidade e segurança, por outro lado reafirma a importância de campanhas educativas e de conscientização sobre a atenção e cuidados que a pista simples e com menos estrutura exige.
 
 
+**Processamento de Linguagem Natural**
+
+Aplicando algumas técnicas de *Processamento de Linguagem Natural*, podemos criar uma abordagem simples de análise de texto sobre as causas dos acidentes e observar alguns pontos.
+Após o pré-processamento, limpeza e lematização, escolhemos o modelo **TF-IDF** de vetorização e aplicamos o *cosseno de similaridade* para o agrupamento semântico das principais causas de acidentes fatais:
+
+![Dimensão do Dataframe](img/grupo_causa_nlp_1.JPG)  
+![Dimensão do Dataframe](img/grupo_causa_nlp_2.JPG)  
 
 
 É possível observar que as causas com maior letalidade contém termos relacionados principalmente ao fator humano, imprudência e comportamento de risco tanto por parte do condutor quanto do pedestre.
 
-Causas como ‘transitar na contramão’, ‘pedestre andava na pista’, ‘velocidade incompatível’ e ‘ultrapassagem indevida’ tornam evidente a porcentagem majoritária ao fator humano. Outras causas estão relacionadas a possível falta de estrutura e a precariedade do sistema viário, como: ‘ausência de reação do condutor’, ‘reação tardia ou ineficiente do condutor’ ou ‘acessar via sem observar a presença dos outros veículos’. Esses são exemplos de causas que em primeira análise parece estar relacionada apenas ao fator humano, porém a similaridade semântica  as relaciona a fatores como ‘ausência de sinalização’, ‘sinalização mal posicionada’ ou ‘ausência de local apropriado para atravessar rodovia’, demonstrando que a falta de estrutura do sistema viário também é um fator de risco para ocorrência de acidentes fatais.
+Causas como *‘transitar na contramão’*, *‘pedestre andava na pista’*, *‘velocidade incompatível’* e *‘ultrapassagem indevida’* tornam evidente a porcentagem majoritária ao fator humano. Outras causas estão relacionadas a possível falta de estrutura e a precariedade do sistema viário, como: *‘ausência de reação do condutor’*, *‘reação tardia ou ineficiente do condutor’* ou *‘acessar via sem observar a presença dos outros veículos’*. Esses são exemplos de causas que em primeira análise parece estar relacionada apenas ao fator humano, porém a similaridade semântica  as relaciona a fatores como *‘ausência de sinalização’*, *‘sinalização mal posicionada’* ou *‘ausência de local apropriado para atravessar rodovia’*, demonstrando que a falta de estrutura do sistema viário também é um fator de risco para ocorrência de acidentes fatais.
 
-
+![Dimensão do Dataframe](img/top_10_grupos_causas_fatais.png)  
 
 Segundo o processamento de linguagem natural, é correto afirmar que a condição meteorológica não é fator determinante das causas entre acidentes fatais. Apesar do aumento do risco e da média no coeficiente de gravidade quando a condição é de chuva, a imprudência e o comportamento de risco continuam prevalecendo nessa equação, demonstrando a grande importância de campanhas educativas e ações diretas de combate à imprudência e violência no trânsito.
 
 
 
-Recomendações
+### Recomendações
 
-A partir das informações obtidas nesse projeto, podemos fazer análises descritivas e comparativas sobre os dados dos acidentes no trânsito e propor uma série de ações de intervenções específicas, seja no campo de investimentos em infraestrutura, em campanhas educativas/publicitárias ou ações humanas de fiscalização e conscientização.
+A partir das informações obtidas nesse projeto, podemos fazer análises descritivas e comparativas sobre os dados dos acidentes no trânsito e propor uma série de ações de intervenções específicas, seja no campo de **investimentos em infraestrutura**, em **campanhas educativas/publicitárias** ou **ações humanas de fiscalização e conscientização**.
 
-Acidentes e suas causas
+* **Acidentes e suas causas**  
 A análise que fizemos mostrou que as principais causas de acidentes estão relacionadas ao fator humano:
-Ausência de reação do condutor: Campanhas educativas  de conscientização  e combate ao uso de celular no trânsito e a importância do descanso para uma condução segura.
-Transitar na contramão: Leis rigorosas contra condutores que praticarem ações como trafegar no acostamento ou contramão, assim como o rigor nas ações de conscientização sobre o uso de substâncias psicoativas no trânsito, enfatizando sua proibição e a gravidade dessa infração.
-Pedestre andava na pista: Investimento em infraestrutura, como sinalização clara e bem posicionada, passagens claras (faixas e viadutos) para pedestres e qualidade da malha viária.
+    * **Ausência de reação do condutor:** Campanhas educativas  de conscientização  e combate ao uso de celular no trânsito e a importância do descanso para uma condução segura.  
+    * **Transitar na contramão:** Leis rigorosas contra condutores que praticarem ações como trafegar no acostamento ou contramão, assim como o rigor nas ações de conscientização sobre o uso de substâncias psicoativas no trânsito, enfatizando sua proibição e a gravidade dessa infração.
+    * **Pedestre andava na pista:** Investimento em infraestrutura, como sinalização clara e bem posicionada, passagens claras (faixas e viadutos) para pedestres e qualidade da malha viária.
 
-Infraestrutura Viária
-Alguns dos principais acidentes no trânsito tem relação com a falta de infraestrutura e algumas ações podem ser eficazes em mitigar o número de ocorrências:
-Duplicação de pista simples: Investimentos na duplicação de vias, especialmente nas rodovias com maior fluxo, podem reduzir colisões frontais e laterais.
-Drenagem e pavimentação: Melhorar o escoamento de água e a qualidade do asfalto para reduzir aquaplanagem e perda de controle.
-Sinalização Inteligente: Sinalização adaptativa e luminosa em pontos críticos de acidentes mais graves e fatais.
+  
+* **Infraestrutura Viária**
+Alguns dos principais acidentes no trânsito tem relação com a falta de infraestrutura e algumas ações podem ser eficazes em mitigar o número de ocorrências:  
+    * **Duplicação de pista simples:** Investimentos na duplicação de vias, especialmente nas rodovias com maior fluxo, podem reduzir colisões frontais e laterais.
+    * **Drenagem e pavimentação:** Melhorar o escoamento de água e a qualidade do asfalto para reduzir aquaplanagem e perda de controle.
+    * **Sinalização Inteligente:** Sinalização adaptativa e luminosa em pontos críticos de acidentes mais graves e fatais.
 
-Legislação e Fiscalização 
+  
+* **Legislação e Fiscalização** 
 Algumas ações a serem tomadas:
-Tecnologias de monitoramento (radar, sensor e câmera)
-Revisão de penas para infrações graves
-Fiscalização baseada em dados
+    * Tecnologias de monitoramento (radar, sensor e câmera)
+    * Revisão de penas para infrações graves
+    * Fiscalização baseada em dados
 
-Campanhas Segmentadas - Direcionar campanhas específicas para motociclistas, caminhoneiros, motoristas de aplicativos e pedestres.
+* **Campanhas Segmentadas** - Direcionar campanhas específicas para motociclistas, caminhoneiros, motoristas de aplicativos e pedestres.
 
-Tecnologia e Inovação 
+* **Tecnologia e Inovação** 
 A Tecnologia precisa ser uma aliada forte na constante evolução no sistema viário
-Planejamento baseado em dados: A produção e o uso contínuos de dados gerados no sistema viário para o aprimoramento constante da infraestrutura.
-Integração de dados interinstitucionais: Promover o cruzamento entre dados de outras instituições como o SAMU, Hospitais, DNIT e outros. 
+    * **Planejamento baseado em dados:** A produção e o uso contínuos de dados gerados no sistema viário para o aprimoramento constante da infraestrutura.
+    * **Integração de dados interinstitucionais:** Promover o cruzamento entre dados de outras instituições como o SAMU, Hospitais, DNIT e outros. 
 
 
 De maneira geral, o combate às principais causas de acidentes fatais no trânsito necessita de campanhas educativas contínuas voltadas ao comportamento seguro, como respeito à sinalização, velocidade compatível e atenção ao tráfego de pedestres, assim como o constante investimento público e ações institucionais com o apoio governamental e da sociedade civil para a manutenção da seguranças dos usuários.
 
 
-Segurança de Dados
+
+## Segurança de Dados
+
 A segurança de Dados na análise relacionados a acidentes de trânsitos é de grande importância e demanda muita atenção. Ainda que realizada com dados públicos e disponíveis, a manipulação exige atenção especial no que diz respeito à segurança e proteção das informações utilizadas.
+
 Apesar de os dados não conterem diretamente informações pessoais, certos campos podem ser considerados sensíveis ou potencialmente identificáveis. Alguns dados presentes em variáveis como data, horário e localização geográfica podem representar risco à privacidade. Latitude e longitude, por exemplo, podem indicar com precisão locais de residência, trabalho ou eventos específicos.
+
 Algumas ações para assegurar a privacidade dos dados analisados precisaram ser feitas durante o desenvolvimento do projeto:
-Anonimização dos dados: A localização geográfica como latitude/longitude, estado e município foram excluídas da nossa análise.
-Armazenamento seguro: Os arquivos dos dados foram mantidos em ambientes seguros e controlados, apenas resultados das análises serão publicados.
-Ética e transparência: As análises foram conduzidas de forma a gerar insights valiosos sobre segurança no trânsito e prevenção de acidentes, evitando qualquer linguagem sensacionalista ou ação fora desse escopo.
+
+* **Anonimização dos dados:** A localização geográfica como latitude/longitude, estado e município foram excluídas da nossa análise.
+
+* **Armazenamento seguro:** Os arquivos dos dados foram mantidos em ambientes seguros e controlados, apenas resultados das análises serão publicados.
+
+* **Ética e transparência:** As análises foram conduzidas de forma a gerar insights valiosos sobre segurança no trânsito e prevenção de acidentes, evitando qualquer linguagem sensacionalista ou ação fora desse escopo.
+
 O cuidado com a segurança dos dados é essencial para garantir a integridade do trabalho e a confiabilidade da ciência de dados como ferramenta para otimização de políticas públicas. Ao adotar medidas de proteção e anonimização, é possível explorar o potencial analítico dos dados sem comprometer a privacidade dos envolvidos, assegurando uma abordagem ética, legal e socialmente responsável.
 
-Conclusão
+### Conclusão
 
 O Projeto Integrado trouxe a oportunidade de criar uma análise exploratória de dados de acidentes de trânsito através do conjunto de dados disponibilizado pela Polícia Rodoviária Federal (PRF). Os dados representam uma ferramenta fundamental para a compreensão dos fatores que contribuem para a ocorrência e gravidade dos acidentes. 
 
-A partir da análise do projeto, foi possível adquirir muita informação sobre o tema e através da análise,l gerar muitos insights valiosos para o contexto de negócio.
+A partir da análise do projeto, foi possível adquirir muita informação sobre o tema e através da análise, gerar muitos insights valiosos para o contexto de negócio.
 
 A incorporação de dados meteorológicos e a análise das causas por meio de Processamento de Linguagem Natural ampliam a capacidade de contextualização e interpretação dos dados, contribuindo para diagnósticos mais precisos. Com isso, este estudo fornece não apenas insumos relevantes para políticas públicas voltadas à segurança no trânsito, como também fortalece a aplicação prática da ciência de dados em problemas sociais concretos.
 
