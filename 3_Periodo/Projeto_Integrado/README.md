@@ -103,7 +103,7 @@ A partir da matriz, podemos avaliar quais variáveis possuem maior influência s
 Nesse primeiro momento, para aprofundar a análise exploratória dos acidentes, definiremos as colunas *‘causa_acidente’* e *‘tipo_acidente’* como variáveis-alvo a começaremos a partir de duas tabelas de frequência com as 15 principais causas e tipos de acidentes no trânsito:  
 
 *Top 15 causas de acidentes*  
-![Ranking 1](img/top_15_causas_acidentes.JPG)   
+![Ranking 1](img/top_15_causas_acidentes.JPG)  
 
 A tabela com as 15 principais causas de acidentes revela a frequência total de registros no conjunto de dados. Entre as mais recorrentes, destacam-se causas como reação tardia ou ineficiente, ausência de reação, acesso à via sem a devida observação e negligência na manutenção de distância segura entre veículos. Esses fatores apontam fortemente para uma relação com imprudência e desatenção por parte dos condutores. Um dado relevante é que 9 das 10 principais causas estão diretamente ligadas a falhas humanas, reforçando essa conexão.     
 
